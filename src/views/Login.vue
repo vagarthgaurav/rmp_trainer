@@ -71,15 +71,12 @@ export default {
         })
         .then(res => {
           let user = res.data.user;
-          let Uid = user.id;
           let token = res.data.token;
-          this.$cookies.set("user_token", token, 60 * 60 * 1);
+          this.$cookies.set("trainer_user_token", token, 60 * 60 * 1);
 
           this.$store.commit("saveUser", { user });
 
           window.location.href = "/";
-
-          this.loginLoader = false;
         })
         .catch(e => {
           console.log(e.response);
@@ -87,9 +84,11 @@ export default {
           if (err == 401) {
             this.snackbar = true;
             this.snackbarContent = "Email/Password is incorrect.";
+            this.loginLoader = false;
           } else {
             this.snackbar = true;
             this.snackbarContent = "Unknown error. Contact admin";
+            this.loginLoader = false;
           }
         });
     }

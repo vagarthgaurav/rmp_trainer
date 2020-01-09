@@ -11,7 +11,7 @@ import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 
 const ax = axios.create({
-  baseURL: 'http://api.formavisioplus.com/v1'
+  baseURL: 'https://api.formavisioplus.com/v1'
 })
 
 Vue.prototype.$http = ax
