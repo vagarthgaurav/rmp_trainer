@@ -14,7 +14,9 @@ export default new Vuetify({
 			light: {
 				primary: '#4B3F72',
 				secondary: '#88498F',
-				button: '#E9F7CA'
+				event: '#820263',
+				eventHover: '#FF5376',
+				loader: '#2E86AB'
 			}
 		}
 	}

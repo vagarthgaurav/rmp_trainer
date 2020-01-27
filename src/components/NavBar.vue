@@ -1,12 +1,12 @@
 <template>
-  <div class="navbar">
+  <div class="navbar" v-if="isLoggedIn">
     <v-app-bar color="primary" dark app flat>
-      <v-app-bar-nav-icon color="white" @click.stop="drawer = !drawer" v-if="isLoggedIn"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon color="white" @click.stop="drawer = !drawer" ></v-app-bar-nav-icon>
 
       <v-toolbar-title>Trainer Dashboard</v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-btn text @click="logout">Logout</v-btn>
+      <v-btn  @click="logout" v-if="isLoggedIn" outlined>Logout</v-btn>
     </v-app-bar>
 
     <v-navigation-drawer

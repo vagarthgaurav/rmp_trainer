@@ -20,6 +20,8 @@
           :items="allCourses"
           class="elevation-1"
           @click:row="rowSelect"
+          :loading="getDataLoader"
+          loading-text="Loading... Please wait"
         >
           <template v-slot:item.trainingCenterLocation="{ item }">
             {{ item.trainingCenterLocation.city.cityName }}, {{item.trainingCenterLocation.address}}
@@ -43,7 +45,7 @@ export default {
       search: "",
 
       allCourses: [],
-
+      getDataLoader: false,
       headers: [
         { text: "Location", value: "trainingCenterLocation" },
         { text: "Start date", value: "startingDate" },
@@ -53,16 +55,18 @@ export default {
   },
   created() {
     // -------------------------- Get all courses ------------------------------
+    this.getDataLoader = true;
     this.$http
       .get("/trainer/" + this.user.id + "/findAll/internship", {
         headers: { Authorization: "Bearer " + this.$store.state.token }
       })
       .then(res => {
-        console.log(res.data);
         this.allCourses = res.data;
-      })
+        this.getDataLoader = false;
+      }) 
       .catch(e => {
         console.log(e.response);
+        this.getDataLoader = false;
       });
     // ------------------------------------------------------------------------
   },

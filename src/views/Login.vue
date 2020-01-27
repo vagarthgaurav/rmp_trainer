@@ -8,6 +8,9 @@
     <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
+          <v-col cols="12" class="text-center mb-5">
+            <img src="../assets/logo.png" width="200px" />
+          </v-col>
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
               <v-toolbar color="primary" dark flat>
