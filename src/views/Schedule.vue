@@ -6,23 +6,6 @@
     </v-snackbar>
 
     <v-container style="max-width: 80%">
-      <v-tooltip bottom>
-        <template v-slot:activator="{ on }">
-          <v-btn
-            fab
-            absolute
-            right
-            @click="scheduleDialog = true"
-            class="mx-5 white--text"
-            color="secondary"
-            v-on="on"
-          >
-            <v-icon>mdi-account-clock</v-icon>
-          </v-btn>
-        </template>
-        <span>Add new dates</span>
-      </v-tooltip>
-
       <v-row class="fill-height mt-12 elevation-3">
         <v-progress-linear v-if="calendarLoader" indeterminate color="loader" height="5"></v-progress-linear>
         <v-col>
@@ -59,6 +42,21 @@
                   </v-list-item>
                 </v-list>
               </v-menu>
+
+              <v-tooltip bottom>
+                <template v-slot:activator="{ on }">
+                  <v-btn
+                    fab
+                    @click="scheduleDialog = true"
+                    class="mx-5 white--text"
+                    color="secondary"
+                    v-on="on"
+                  >
+                    <v-icon medium>mdi-account-clock</v-icon>
+                  </v-btn>
+                </template>
+                <span>Add new dates</span>
+              </v-tooltip>
             </v-toolbar>
           </v-sheet>
           <v-sheet height="600">
@@ -160,7 +158,7 @@ export default {
     this.getEvents();
   },
   mounted() {
-    this.$refs.calendar.checkChange();
+    //this.$refs.calendar.checkChange();
   },
   methods: {
     viewDay({ date }) {
